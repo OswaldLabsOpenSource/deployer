@@ -6,7 +6,7 @@
   "author": "Anand Chowdhary <mail@anandchowdhary.com>",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
+    "build": "cp .env dist/.env && tsc",
     "start": "yarn build && node dist/server.js"
   },
   "devDependencies": {
