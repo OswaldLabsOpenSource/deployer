@@ -11,12 +11,13 @@ agastya-staging:
 agastya-production:
   name: "Agastya"
   channel: "#agastya"
-  deploy: "cd ~/agastya && yarn deploy"
+  deploy: "ls"
 
 platform:
   name: "Platform"
   channel: "#platform"
   deploy: "cd ~/platform && ./update.sh"
+  url: "https://developer.oswaldlabs.com"
 
 berkhan:
   name: "Berkhan"

@@ -1,7 +1,11 @@
+import { config } from "dotenv";
+config();
+
 import { exec } from "child_process";
 import { join } from "path";
 import { readFile } from "fs-extra";
 import { safeLoad } from "js-yaml";
+import axios from "axios";
 
 export const execute = (command: string) =>
   new Promise((resolve, reject) => {
@@ -9,6 +13,14 @@ export const execute = (command: string) =>
       if (error || stderr) return reject(error || stderr);
       resolve(stdout);
     });
+  });
+
+export const message = async (channel: string, text: string) =>
+  axios.post(<string>process.env.WEBHOOK_URL, {
+    text,
+    channel,
+    username: "Deployer",
+    icon_url: "https://public-cdn.oswaldlabs.com/icons/deployer.png"
   });
 
 export const deploy = async (
@@ -24,11 +36,16 @@ export const deploy = async (
     await readFile(join(__dirname, "..", "deployer.yml"), "utf8")
   );
   if (!config[command]) throw new Error(`Invalid command: ${command}`);
+  await message(
+    config[command].channel,
+    `Deploying ${config[command].name}...`
+  );
   await execute(config[command].deploy);
-  const message = `Successfully deployed ${config[command].name}`;
-  return message;
+  if (!config[command].name.includes("agastya"))
+    await message(
+      config[command].channel,
+      `Successfully deployed ${config[command].name}: ${config[command].url ||
+        ""}`
+    );
+  return;
 };
-
-deploy("agastya-development")
-  .then(message => console.log("Done!", message))
-  .catch(error => console.log("got error", error));
