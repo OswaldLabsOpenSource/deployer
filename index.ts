@@ -41,7 +41,7 @@ export const deploy = async (
     `Deploying ${config[command].name}...`
   );
   await execute(config[command].deploy);
-  if (!config[command].name.includes("agastya"))
+  if (!command.includes("agastya"))
     await message(
       config[command].channel,
       `Successfully deployed ${config[command].name}: ${config[command].url ||
