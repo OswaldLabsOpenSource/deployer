@@ -1,1 +1,29 @@
-hello: "world"
+agastya-development:
+  name: "Agastya (development)"
+  channel: "#agastya"
+  deploy: "cd ~/agastya-development && yarn deploy"
+
+agastya-staging:
+  name: "Agastya (staging)"
+  channel: "#agastya"
+  deploy: "cd ~/agastya-staging && yarn deploy"
+
+agastya-production:
+  name: "Agastya"
+  channel: "#agastya"
+  deploy: "cd ~/agastya && yarn deploy"
+
+platform:
+  name: "Platform"
+  channel: "#platform"
+  deploy: "cd ~/platform && ./update.sh"
+
+berkhan:
+  name: "Berkhan"
+  channel: "@anandchowdhary"
+  deploy: "cd ~/berkhan && ./update.sh"
+
+a11yisimportant:
+  name: "@a11yisimportant"
+  channel: "@anandchowdhary"
+  deploy: "cd ~/a11yisimportant && ./update.sh"
