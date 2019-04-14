@@ -1,17 +1,17 @@
 agastya-development:
   name: "Agastya (development)"
   channel: "#agastya"
-  deploy: "cd ~/agastya-development && yarn deploy"
+  deploy: "cd ~/agastya-development && ./update.sh"
 
-agastya-staging:
-  name: "Agastya (staging)"
+agastya-acceptance:
+  name: "Agastya (acceptance)"
   channel: "#agastya"
-  deploy: "cd ~/agastya-staging && yarn build-test && yarn deploy"
+  deploy: "cd ~/agastya-acceptance && ./update.sh"
 
 agastya-production:
-  name: "Agastya"
+  name: "Agastya (production)"
   channel: "#agastya"
-  deploy: "ls"
+  deploy: "cd ~/agastya-production && ./update.sh"
 
 platform:
   name: "Platform"
