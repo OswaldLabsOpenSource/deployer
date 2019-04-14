@@ -44,8 +44,8 @@ export const deploy = async (
   if (!config[command].name.includes("agastya"))
     await message(
       config[command].channel,
-      `Successfully deployed ${config[command].name}: ${config[command].url ||
-        ""}`
+      `✅ Successfully deployed ${config[command].name}${config[command].url ?
+        (": " + config[command].url) : ""}`
     );
   return;
 };
