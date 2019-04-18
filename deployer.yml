@@ -28,3 +28,8 @@ a11yisimportant:
   name: "@a11yisimportant"
   channel: "@anandchowdhary"
   deploy: "cd ~/a11yisimportant && ./update.sh"
+
+deployer:
+  name: "Deployer"
+  channel: "@anandchowdhary"
+  deploy: "cd ~/deployer && ./update.sh"
