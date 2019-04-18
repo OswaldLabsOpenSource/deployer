@@ -41,7 +41,7 @@ export const deploy = async (
     `Deploying ${config[command].name}...`
   );
   await execute(config[command].deploy);
-  if (!command.includes("no-notification"))
+  if (command.includes("notify"))
     await message(
       config[command].channel,
       `✅ Successfully deployed ${config[command].name}${config[command].url ?
