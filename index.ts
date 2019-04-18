@@ -36,10 +36,11 @@ export const deploy = async (
     await readFile(join(__dirname, "..", "deployer.yml"), "utf8")
   );
   if (!config[command]) throw new Error(`Invalid command: ${command}`);
-  await message(
-    config[command].channel,
-    `Deploying ${config[command].name}...`
-  );
+  if (command.includes("notify"))
+    await message(
+      config[command].channel,
+      `Deploying ${config[command].name}...`
+    );
   await execute(config[command].deploy);
   if (command.includes("notify"))
     await message(
